@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Identity Verification</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff9f;
+      font-family: monospace;
+      text-align: center;
+      margin-top: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background: black;
+      color: #00ff9f;
+      border: 1px solid #00ff9f;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00ff9f;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+<h2 id="question">Initializing verification...</h2>
+<div id="buttons"></div>
+
+<script>
+const questions = [
+  "Are you Rose?",
+  "Are you NOT Rose?",
+  "Do you identify as Rose?",
+  "Are you pretending to be Rose?",
+  "Would Rose say yes?",
+  "Would Rose say no?",
+  "Are you the intended recipient?",
+  "Are you absolutely sure?",
+  "Are you uncertain?",
+  "Would you lie about being Rose?",
+  "Is your name Rose?",
+  "Is your name not Rose?",
+  "Are you aware of this verification?",
+  "Do you confirm your identity?",
+  "Final question: Are you truly Rose?"
+];
+
+let current = 0;
+
+function showQuestion() {
+  if (current < questions.length) {
+    document.getElementById("question").innerText = questions[current];
+    document.getElementById("buttons").innerHTML = `
+      <button onclick="next()">YES</button>
+      <button onclick="next()">NO</button>
+    `;
+  } else {
+    showResult();
+  }
+}
+
+function next() {
+  current++;
+  showQuestion();
+}
+
+function showResult() {
+  document.getElementById("question").innerText = "Verification complete.";
+  document.getElementById("buttons").innerHTML = "<h3>CODEWORD: EAGLE-17</h3>";
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
